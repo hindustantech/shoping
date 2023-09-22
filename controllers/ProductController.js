@@ -243,8 +243,8 @@ export const  searchProductControler = async(req,res)=>{
     const{keywods}=req.params;
     const results =await productModle.find({
       $or:[
-        {name:{$regex:keywods,$Options:"i"}},
-        {decs:{$regex:keywods,$Options:"i"}},
+        {name:{$regex:keywods,$options:"i"}},
+        {decs:{$regex:keywods,$options:"i"}},
       ]
     }).select("-photo")
     res.json(results)

@@ -8,9 +8,9 @@ const SearchInput = () => {
     const handelSubmit=async(e)=>{
        e.preventDefault()
         try {
-            const{data}=await axios.get(`${process.env.REACT_APP_API}/api/v1/product/search/${values.keyword}`)
-            setValues({...values,results:data})
-            navigate('/search')
+            const{data}=await axios.get(`${process.env.REACT_APP_API}/api/v1/product/search/${values.keyword}`);
+            setValues({...values ,results:data})
+            navigate('/searchs')
         } catch (error) {
             console.log(error)
         }
