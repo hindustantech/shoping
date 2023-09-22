@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
+/* font-family: 'Playfair Display', serif;  */
+/* font-family: 'Poppins', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+
+.navbar {
+    font-family: 'Poppins', sans-serif;
+    line-height: 26px;
+    text-transform: uppercase;
+    
+    font-size: 16px;
+    box-shadow: 0 8px 6px -6px gray;
+    -webkit-box-shadow: 0 8px 6px -6px gray;
+    border-bottom: 0.25 solid gray !important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  white-space:nowrap;
+}
+.nav-link {
+    font-weight: 300 !important;
+}
+
+.active {
+    box-shadow: 0 6px 4px -6px gray;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-family: 'roboto', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+
+/* Page Not Found CSS */
+
+.pnf {
+    display: flex;
+    min-height: 65vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pnf-title {
+    font-size: 108px;
+    font-weight: 700;
+}
+
+.pnf-btn {
+    color: rgb(6, 7, 7);
+    border: 1px solid rgb(168, 152, 152);
+    border-radius: 2px;
+    text-decoration: none;
+    padding: 14px;
+    margin: 14px;
+    background-color: rgb(37, 206, 37);
+
+}
+
+.footer {
+    background-color: rgba(15, 15, 15, 0.849);
+    color: rgb(245, 241, 234);
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+    text-transform: capitalize;
+    word-spacing: 5px;
+}
+
+.footer a:hover {
+    color: wheat;
+}
+
+.icon i
+{
+    margin: 12px 14px 0;
+}
+
+/* Register  page */
+
+.flex{
+    /* justify-content: center; */
+    margin-left: 30%;
+    padding: 10vh;
+    width: 34rem;
+    /* background-color: rgb(231, 167, 167);
+    border-radius: 5%;
+    position: relative;
+    left: ; */
+
+}
+
+
+/* Custom Css */
+
+.policy{
+display: flex;
+justify-content: baseline;
+text-align: justify;
+}
+
+/* Spinner  Loder*/
+
+h1 {
+    font: 2em 'Roboto', sans-serif;
+    margin-bottom: 40px;
+  }
+  
+  .loading {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(43, 42, 42, 0.3);
+    border-radius: 50%;
+    border-top-color: #0e0e0e;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+    
+  }
+  
+  @keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+
+  /* Admin Module */
+
+ .card{
+  border: 2px solid red;
+}
+/* #sidebar{
+    height: 100vh;
+} */
+.product-link{
+    text-decoration:none;
+    display: inline-block;
+    position: relative;
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+}
+    
+
+
+/* CSS styles for the layout */
+.layout-title {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* CSS styles for the category filter */
+  .filter-category {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  /* CSS styles for the product cards */
+  .card {
+    width: 18rem;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    height: 10rem;
+  }
+  
+  .card-body {
+    padding: 10px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+  }
+  
+  .card-text {
+    font-size: 14px;
+  }
+  
+  .btn {
+    margin-top: 10px;
+  }
+  

@@ -1,0 +1,26 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import { Authprovider } from "./context/auth";
+import { Searchprovider } from "./context/Search";
+import "antd/dist/reset.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <Authprovider>
+    <Searchprovider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Searchprovider>
+  </Authprovider>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
