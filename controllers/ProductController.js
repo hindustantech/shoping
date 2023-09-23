@@ -240,11 +240,11 @@ export const ProductListController=async(req,res)=>{
 
 export const  searchProductControler = async(req,res)=>{
   try {
-    const{keywods}=req.params;
+    const{keyword}=req.params;
     const results =await productModle.find({
       $or:[
-        {name:{$regex:keywods,$options:"i"}},
-        {decs:{$regex:keywods,$options:"i"}},
+        {name:{$regex:keyword,$options:"i"}},
+        {decs:{$regex:keyword,$options:"i"}},
       ]
     }).select("-photo")
     res.json(results)
