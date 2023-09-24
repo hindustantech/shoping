@@ -19,12 +19,16 @@ import Order from "./pages/user/Order";
 import Profile from "./pages/user/Profile";
 import Product from "./pages/Admin/Product";
 import UpadateProduct from "./pages/Admin/UpadateProduct";
+import Search from './pages/Search'
+import ProductDetalis from "./pages/ProductDetalis";
 
 function App() {
   return (
     <>
-      <Routes>
+      <Routes>  
         <Route path="/" element={<HomePage />} />
+        <Route path="/product/:slug" element={<ProductDetalis />} />
+        <Route path="/searchs" element={<Search />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />
