@@ -4,8 +4,10 @@ import { SiShopify } from "react-icons/si";
 import { useAuth } from "../../context/auth";
 import toast from "react-hot-toast";
 import SearchInput from "../from/SearchInput";
+import useCategory from "../../hooks/useCategory";
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const categories = useCategory();
   const handelLogout = () => {
     setAuth({
       ...auth,
@@ -43,11 +45,37 @@ const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/catgeory" className="nav-link">
-                  Catgeory
-                </NavLink>
-              </li>
+
+              <Link
+                className="nav-link dropdown-toggle"
+                to={"/ Categories"}
+                id="dropdownMenuLink"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                categories
+              </Link>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link
+                    className="dropdown-item nav-link"
+                    to={"/Categories"}
+                  >
+                    All Category
+                  </Link>
+                </li>
+                {categories?.map((c) => (
+                  <li>
+                    <Link
+                      className="dropdown-item nav-link"
+                      to={`/category/${c.slug}`}
+                    >
+                      {c.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -66,7 +94,6 @@ const Header = () => {
                   <li className="nav-item dropdown">
                     <NavLink
                       className="nav-link dropdown-toggle"
-                      href="#"
                       id="navbarDropdownMenuLink"
                       role="button"
                       data-bs-toggle="dropdown"

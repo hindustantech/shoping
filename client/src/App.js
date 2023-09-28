@@ -21,6 +21,8 @@ import Product from "./pages/Admin/Product";
 import UpadateProduct from "./pages/Admin/UpadateProduct";
 import Search from './pages/Search'
 import ProductDetalis from "./pages/ProductDetalis";
+import Categories from "./pages/Categories";
+import CategoryProduct from "./pages/CategoryProduct";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
       <Routes>  
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:slug" element={<ProductDetalis />} />
+        <Route path="/category/:slug" element={<CategoryProduct />} />
+        <Route path="/Categories" element={<Categories/>} />
         <Route path="/searchs" element={<Search />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
