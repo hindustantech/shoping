@@ -23,6 +23,7 @@ import Search from './pages/Search'
 import ProductDetalis from "./pages/ProductDetalis";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/product/:slug" element={<ProductDetalis />} />
         <Route path="/category/:slug" element={<CategoryProduct />} />
         <Route path="/Categories" element={<Categories/>} />
+        <Route path="/Cart" element={<CartPage/>} />
         <Route path="/searchs" element={<Search />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

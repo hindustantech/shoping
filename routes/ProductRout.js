@@ -8,7 +8,11 @@ import {
   ProductCountControler,
   ProductFilterControler,
   ProductListController,
+  ProductcategoryRoute,
+  braintreeTokenController,
+  braintreepaymentgetway,
   deletProductController,
+  relatedProductController,
   searchProductControler,
   updateProductController,
 } from "../controllers/ProductController.js";
@@ -57,6 +61,16 @@ router.get("/Product-count", ProductCountControler);
 // product list router 
 router.get('/product_list/:page',ProductListController);
 
-router.get('/search/:keyword',searchProductControler)
+router.get('/search/:keyword',searchProductControler);
+
+//similler Product
+router.get("/related-Product/:pid/:cid",relatedProductController);
+
+router.get("/Product-category/:slug",ProductcategoryRoute );
+// Payment Route
+//token 
+router.get("/braintree/token",braintreeTokenController);
+//paymentgetway
+router.post('/braintree/payment',requireSignIn,braintreepaymentgetway);
 
 export default router;

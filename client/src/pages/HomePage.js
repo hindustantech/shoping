@@ -5,8 +5,11 @@ import Spinners from "./../components/Spinners";
 import { Checkbox, Radio } from "antd";
 import { Prices } from "../components/Prices";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/Cart";
+import toast from "react-hot-toast";
 
 const HomePage = () => {
+  const [cart, SetCart] = useCart();
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
   const [products, setProducts] = useState([]);
@@ -14,7 +17,7 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setpage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const getAllProduct = async () => {
     try {
       setLoading(true);
@@ -108,7 +111,7 @@ const HomePage = () => {
       <div className="container-fluid m-3 p-3">
         <div className="row mt-3">
           <div className="col-sm-3 ">
-            <h4 className="text-center "> Filter by Category</h4>
+            <h4 className=" "> Filter by Category</h4>
             <div className="d-flex flex-column">
               {categories?.map((c) => (
                 <Checkbox
@@ -119,8 +122,8 @@ const HomePage = () => {
                 </Checkbox>
               ))}
             </div>
-            <h4 className="text-center "> Filter by price</h4>
-            <div className="d-flex flex-column">
+            <h5 className=" "> Filter by price</h5>
+            <div className=" d-flex flex-column">
               <Radio.Group onChange={(e) => setRadio(e.target.value)}>
                 {Prices?.map((p) => (
                   <div key={p._id}>
@@ -139,7 +142,7 @@ const HomePage = () => {
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/photo-product/${p._id}`}
                     className="card-img-top"
-                    style={{ height: "10rem" }} 
+                    style={{ height: "10rem" }}
                   />
                   <div className="card-body">
                     <h5 className="card-title">Product Name : {p.name}</h5>
@@ -155,7 +158,14 @@ const HomePage = () => {
                     >
                       Deatils
                     </button>
-                    <button className="btn btn-primary ms-3">
+                    <button 
+                    className="btn btn-primary ms-3" 
+                    onClick={() => {
+                      SetCart([...cart,p])
+                      localStorage.setItem('cart',JSON.stringify([...cart,p]))
+                      toast.success("Item Added To Cart")
+                    }}
+                    >
                       Add to Cart
                     </button>
                   </div>
