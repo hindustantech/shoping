@@ -1,0 +1,121 @@
+body,
+html {
+  overflow-x: hidden;
+}
+.product .card-image {
+  text-align: center;
+  padding: 15px 10px;
+}
+.product:hover {
+  transform: scale(1.01);
+  transition: all 0.3s ease-in-out;
+}
+.product .card-image img {
+  min-height: 230px;
+  width: auto;
+  max-height: 230px;
+  margin: auto;
+  transform: scale(1);
+}
+.product .card-footer {
+  background: #fff;
+}
+.mPage hr {
+  border-top: 1px solid #eee !important;
+  padding: 0;
+}
+.product {
+  box-shadow: 0px 8px 13px -5px #dedede;
+  border: 1px solid #dedede;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  padding: 10px 0;
+  background: #fff;
+}
+.product p {
+  padding: 0;
+  margin: 0;
+}
+.product h4 {
+  margin: 0 auto;
+  text-transform: capitalize;
+  font-size: 18px;
+}
+.product button {
+  font-size: 14px;
+  margin: 0 !important;
+  width: 100%;
+}
+.footer p {
+  margin: 0;
+}
+.footer {
+  padding-bottom: 15px;
+  background: #333;
+  margin: 0;
+}
+.socialBtn a {
+  background: #fff;
+  color: #111;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  width: 35px;
+  height: 35px;
+  line-height: 32px;
+  text-align: center;
+  padding: 0;
+  margin: 5px;
+  font-size: 16px;
+}
+
+.copywrite {
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 10px;
+}
+
+nav.navbar .navbar-nav li sup {
+  position: absolute;
+  margin: 4px 0px 0 -5px;
+}
+
+nav.navbar .navbar-nav {
+  align-items: center;
+}
+nav.navbar .navbar-brand svg {
+  font-size: 22px;
+  margin: 0 5px 4px 0;
+}
+nav.navbar .navbar-brand {
+  text-transform: capitalize;
+  line-height: 1;
+  font-size: 18px;
+}
+nav.navbar ul li.nav-item:hover > a {
+  color: #fff !important;
+  background: #333;
+  border-radius: 4px;
+}
+nav.navbar li {
+  text-transform: capitalize;
+}
+nav.navbar li .dropdown-menu {
+  margin: 0;
+  padding: 5px;
+}
+nav.navbar li .dropdown-menu li i {
+  width: 20px;
+  text-align: left;
+}
+
+nav.navbar li .dropdown-menu li:hover a {
+  background: #333;
+  color: #fff !important;
+}
+nav.navbar li ul li a,
+nav.navbar li a {
+  color: #111;
+  border-radius: 4px;
+  padding: 8px 8%;
+}
