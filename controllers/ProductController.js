@@ -320,6 +320,7 @@ export const ProductcategoryRoute = async (req, res) => {
 };
 
 // PaymentGetway Api
+//Token
 export const braintreeTokenController = async (req, res) => {
   try {
     gateway.clientToken.generate({}, function (err, response) {
@@ -338,22 +339,22 @@ export const braintreeTokenController = async (req, res) => {
 
 export const braintreepaymentgetway = async (req, res) => {
   try {
-    const { cart, nonce } = req.body;
+    const {Cart, nonce} = req.body;
     let total = 0;
-    cart.map((i) => {
-      total += i;
+    Cart.map((i) => { 
+      total += i.price;
     });
     let newTransaction=gateway.transaction.sale({
       amount:total,
       paymentMethodNonce:nonce,
       options:{
-        submitForSettlement:true
+        submitForSettlement:true,
       } 
     },
       function(error,result){
         if(result){
           const order=new OrderModel({
-            products:cart,
+            products:Cart,
             payment:result,
             buyers:req.user._id
           }).save();
@@ -368,12 +369,3 @@ export const braintreepaymentgetway = async (req, res) => {
     console.log(error);
   }
 };
-
- export const getOrderProductController= async(req,res)=>{
-  try {
-    
-  } catch (error) {
-    console.log(error);
-
-  }
-}

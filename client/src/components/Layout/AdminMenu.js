@@ -42,6 +42,12 @@ const AdminMenu = () => {
                   </NavLink>
                 </li>
                 <li className="nav-item">
+                  <NavLink to="/dashboard/admin/Orders" className="nav-link">
+                    <i className="fa fa-paint-brush" aria-hidden="true" />
+                    <span>Orders</span>
+                  </NavLink>
+                </li>
+                <li className="nav-item">
                   <NavLink to="/dashboard/admin/product" className="nav-link">
                     <i className="fa fa-file-text-o" aria-hidden="true" />
                     <span> All Product List</span>

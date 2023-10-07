@@ -1,5 +1,6 @@
 import { hashPassword, comparePassword } from "../helper/authHelper.js";
 import userModel from "../models/userModel.js";
+import OrderModel from "../models/OrderModel.js";
 import jwt from "jsonwebtoken";
 export const registerController = async (req, res) => {
   try {
@@ -94,12 +95,12 @@ export const LoginController = async (req, res) => {
       success: true,
       message: "Login Successfuly",
       user: {
-        _id:user._id,
+        _id: user._id,
         name: user.name,
         email: user.email,
         phone: user.phone,
         address: user.address,
-        role:user.role,
+        role: user.role,
       },
       token,
     });
@@ -154,7 +155,7 @@ export const LoginController = async (req, res) => {
 // };
 export const forgotPasswordController = async (req, res) => {
   try {
-    const {email, question, newPassword }= req.body;
+    const { email, question, newPassword } = req.body;
     if (!email) {
       res.status(400).send({ message: "Email is Required" });
     }
@@ -164,7 +165,7 @@ export const forgotPasswordController = async (req, res) => {
     if (!newPassword) {
       res.status(400).send({ message: "Newpassword is Required" });
     }
-    
+
     //cheeck
     const user = await userModel.findOne({ email, question });
     if (!user) {
@@ -174,7 +175,7 @@ export const forgotPasswordController = async (req, res) => {
       });
     }
     const hashed = await hashPassword(newPassword);
-    
+
     await userModel.findByIdAndUpdate(user._id, { password: hashed });
     res.status(200).send({
       success: true,
@@ -195,34 +196,88 @@ export const testControler = (req, res) => {
   res.send("procteed rout");
 };
 
-export const updateProfileController= async(req,res)=>{
+export const updateProfileController = async (req, res) => {
   try {
-    const{name, email,password, phone, address}=req.body
-    const user =await userModel.findById(req.user._id)
-    if(password && password.length<6)
-    {
-      return res.json({error:'Required 6 character '})
+    const { name, email, password, phone, address } = req.body;
+    const user = await userModel.findById(req.user._id);
+    if (password && password.length < 6) {
+      return res.json({ error: "Required 6 character " });
     }
-    const hashedPassword=password? await hashPassword(password):undefined
-    const updateUser=await userModel.findByIdAndUpdate(req.user._id,{
-      name:name||user.name,
-      password:hashedPassword||user.password,
-      phone:phone||user.phone,
-      address:address||user.address,
-
-    },{new:true});
+    const hashedPassword = password ? await hashPassword(password) : undefined;
+    const updateUser = await userModel.findByIdAndUpdate(
+      req.user._id,
+      {
+        name: name || user.name,
+        password: hashedPassword || user.password,
+        phone: phone || user.phone,
+        address: address || user.address,
+      },
+      { new: true }
+    );
     res.status(200).send({
-      success:true,
-      message:'Profile Updated Succesfully',
-      updateUser
+      success: true,
+      message: "Profile Updated Succesfully",
+      updateUser,
     });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Update Profiled",
+      error,
+    });
+  }
+};
 
+export const getOrderProductController = async (req, res) => {
+  try {
+    const orders = await OrderModel.find({ buyers: req.user._id })
+      .populate("products", "-photo")
+      .populate("buyers", "name");
+    res.json(orders);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While geting Orders",
+      error,
+    });
+  }
+};
+// Get All Orders
+export const getAllOrderProductController = async (req, res) => {
+  try {
+    const orders = await OrderModel.find({})
+      .populate("products", "-photo")
+      .populate("buyers", "name")
+      .sort({ createdAt: -1 }); // Use an object to specify the field and sort order
+
+    res.json(orders);
+  } catch (error) {
+    console.log(error);
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error While geting Orders",
+      error,
+    });
+  }
+};
+
+// update Order Status
+
+export const updateOrderStatus=async(req,res)=>{
+  try {
+      const{orderId}=req.params;
+      const{status}=req.body;
+      const order=await OrderModel.findByIdAndUpdate(orderId,{status},{new:true});
+      res.json(order);
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success:false,
-      message:'Error In Update Profiled',
+      message:'Error While Updating Order',
       error
-    })
+     })
   }
- };
+}

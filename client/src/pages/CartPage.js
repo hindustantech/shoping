@@ -21,10 +21,7 @@ const CartPage = () => {
       Cart.map((item) => {
         total = total + item.price;
       });
-      return total.toLocaleString("en-IN", {
-        style: "currency",
-        currency: "INR",
-      });
+      return total.toLocaleString('en-US',   {style: 'currency', currency: 'USD'} ); 
     } catch (error) {}
   };
   //  DeletItem
@@ -61,12 +58,13 @@ const CartPage = () => {
       const { nonce } = await instance.requestPaymentMethod();
       const { data } = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/product/braintree/payment`,
-        { Cart, nonce }
+        { nonce, Cart }
       );
-      localStorage.removeItem("cart");
-      navigate("/dashboard/user/Orders");
-      toast.success("Payment Completated Successfully");
       setLodaing(false);
+      localStorage.removeItem("cart");
+      SetCart([]);
+      navigate("/dashboard/user/orders");
+      toast.success("Payment Completated Successfully");
     } catch (error) {
       console.log(error);
       setLodaing(false);
@@ -156,7 +154,7 @@ const CartPage = () => {
                         })
                       }
                     >
-                      PlZ Login
+                      Please Login
                     </button>
                   )}
                 </div>
@@ -179,7 +177,7 @@ const CartPage = () => {
                   <button
                     className="btn btn-primary"
                     onClick={handlePayment}
-                    disabled={!loading || !instance || !auth?.user?.address}
+                    disabled={loading || !instance || !auth?.user?.address}
                   >
                     {loading ? "processing...." : "Make Payment"}
                   </button>
