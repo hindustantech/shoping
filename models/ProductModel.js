@@ -19,6 +19,10 @@ const ProductSchema=new mongoose.Schema({
         type:Number,
         require:true
     },
+    Discountprice:{
+        type:Number,
+        require:true
+    },
     category:{
         type:mongoose.Types.ObjectId,
         ref:'category',

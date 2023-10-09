@@ -40,6 +40,8 @@ router.put(
 
 // get Products
 router.get("/get-product", GetProductController);
+// bannerProduct
+// router.get("/banner-product", GetBannerProductController);
 
 //get Single Products
 router.get("/get-product/:slug", GetSingleProductController);

@@ -299,6 +299,31 @@ export const relatedProductController = async (req, res) => {
     });
   }
 };
+// Banner Product
+// export const GetBannerProductController = async (req, res) => {
+//   try {
+//     const { pid, cid } = req.params;
+//     const product = await productModle
+//       .find({
+//         category: cid,
+//         _id: { $ne: pid },
+//       })
+//       .select("-photo")
+//       .limit(6)
+//       .populate("category");
+//     res.status(200).send({
+//       success: true,
+//       product,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(400).send({
+//       success: false,
+//       message: "Error While going",
+//       error,
+//     });
+//   }
+// };
 
 export const ProductcategoryRoute = async (req, res) => {
   try {

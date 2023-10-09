@@ -213,7 +213,7 @@ const UpadateProduct = () => {
               </div>
               <div className="md-3">
                 <button
-                  className="btn btn-primary mb-3"
+                  className="btn btn-primary"
                   onClick={handleUpdateProduct}
                 >
                   Update
